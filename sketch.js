@@ -1,10 +1,11 @@
+let api = "https://archive-api.open-meteo.com/v1/archive?";
 let lat = 52;
 let lon = 13;
 let startDate = '1955-12-14';
 let endDate = '1970-02-01';
 let datatime = 'hourly';
 let parameter = 'temperature_2m';
-let questionURL = `https://archive-api.open-meteo.com/v1/archive?${lat}&${lon}&${startDate}&${endDate}&${datatime}=${parameter}`;
+let apiURL = api + lat + "&" + lon + "&" + startDate + "&" + endDate + "&" + datatime + "=" + parameter;
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -16,7 +17,7 @@ function setup() {
 
 function getData() {
     console.log('getting data...');
-    loadJSON(questionURL, gotData)
+    loadJSON(questionURL, gotData);
 }
 
 function gotData(data) {
@@ -25,5 +26,5 @@ function gotData(data) {
 }
 
 function draw() {
-    line(0, 0, width, height)
+    line(0, 0, width, height);
 }
