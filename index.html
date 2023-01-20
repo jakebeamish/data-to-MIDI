@@ -3,20 +3,37 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <title>My Website</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- <script type="javascript" src="libraries/p5.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    
+    <script src="main.js"></script>
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <main>
+<body>    <main>
         <h1>Data to MIDI</h1>
+        <fieldset>
+            <form onsubmit="return getData()" method="dialog">
+                <label for="start-date">Start date:</label>
+                <input type="date" name="start-date" id="start-date" value="2000-01-01" min="1970-01-01"
+                    max="2021-01-01" required>
+                <label for="end-date">End date:</label>
+                <input type="date" name="end-date" id="end-date" value="2001-01-01" min="1970-01-01" max="2021-01-01"
+                    required>
+                <label for="latitude">Latitude:</label>
+                <input type="number" name="latitude" id="latitude" value="1">
+                <label for="longitude">Longitude:</label>
+                <input type="number" name="longitude" id="longitude" value="1">
+                <label for="parameter">Parameter:</label>
+                <select name="parameter" id="parameter" required>
+                    <option value="temperature_2m">Temperature (2m)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <input type="submit">
+            </form>
+        </fieldset>
     </main>
-    <script type="javascript" src="/sketch.js"></script>
 </body>
 
 </html>
