@@ -3,10 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
-    
+    <title>Data to MIDI</title>
     <script src="main.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,8 +25,43 @@
                 <label for="parameter">Parameter:</label>
                 <select name="parameter" id="parameter" required>
                     <option value="temperature_2m">Temperature (2m)</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <option value="relativehumidity_2m">Relative Humidity (2m)</option>
+                    <option value="dewpoint_2m">Dewpoint (2m)</option>
+                    <option value="apparent_temperature">Apparent Temperature</option>
+                    <option value="pressure_msl">Sealevel Pressure</option>
+                    <option value="surface_pressure">Surface Pressure</option>
+                    <option value="precipitation">Precipitation</option>
+                    <option value="rain">Rain</option>
+                    <option value="snowfall">Snowfall</option>
+                    <option value="weathercode">Weathercode</option>
+                    <option disabled>Cloudcover</option>
+                    <option value="cloudcover">Cloudcover Total</option>
+                    <option value="cloudcover_low">Cloudcover Low</option>
+                    <option value="cloudcover_mid">Cloudcover Mid</option>
+                    <option value="cloudcover_high">Cloudcover High</option>
+                    <option disabled>Radiation</option>
+                    <option value="shortwave_radiation">Shortwave Solar Radiation</option>
+                    <option value="direct_radiation">Direct Solar Radiation</option>
+                    <option value="diffuse_radiation">Diffuse Solar Radiation</option>
+                    <option value="direct_normal_irradiance">Direct Normal Irradiance (DNI)</option>
+                    <option disabled>Wind</option>
+                    <option value="windspeed_10m">Windspeed 10m</option>
+                    <option value="windspeed_100m">Windspeed 100m</option>
+                    <option value="winddirection_10m">Wind Direction 10m</option>
+                    <option value="winddirection_100m">Wind Direction 100m</option>
+                    <option disabled>──────────</option>
+                    <option value="et0_fao_evapotranspiration">Reference Evotranspiration (ET0)</option>
+                    <option value="vapor_pressure_deficit">Vapour Pressure Deficit</option>
+                    <option disabled>Soil Temperature</option>
+                    <option value="soil_temperature_0_to_7cm">Soil Temperature (0 to 7cm)</option>
+                    <option value="soil_temperature_7_to_28cm">Soil Temperature (7 to 28cm)</option>
+                    <option value="soil_temperature_28_to_100cm">Soil Temperature (28 to 100cm)</option>
+                    <option value="soil_temperature_100_to_255cm">Soil Temperature (100 to 255cm)</option>
+                    <option disabled>Soil Moisture</option>
+                    <option value="soil_moisture_0_to_7cm">Soil Moisture (0 to 7cm)</option>
+                    <option value="soil_moisture_7_to_28cm">Soil Moisture (7 to 28cm)</option>
+                    <option value="soil_moisture_28_to_100cm">Soil Moisture (28 to 100cm)</option>
+                    <option value="soil_moisture_100_to_255cm">Soil Moisture (100 to 255cm)</option>
                 </select>
                 <input type="submit">
             </form>
