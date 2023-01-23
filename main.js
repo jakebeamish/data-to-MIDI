@@ -6,6 +6,13 @@ function getData() {
     let granularity = "hourly";
     let parameter = document.getElementById("parameter").value;
 
+    if (Date.parse(new Date(startDate)) > Date.parse(new Date(endDate))) {
+        alert("Start date is after end date. Swapping them around")
+        let swap = startDate;
+        startDate = endDate;
+        endDate = swap;
+    }
+
     buildURL(startDate, endDate, latitude, longitude, granularity, parameter)
 }
 
