@@ -1,5 +1,7 @@
 let coordinates, latitude, longitude;
 
+let loadedJSON = null;
+
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -44,7 +46,18 @@ function getData() {
     let granularity = "hourly";
     let parameter = document.getElementById("parameter").value;
 
-    buildURL(startDate, endDate, latitude, longitude, granularity, parameter)
+    let url = buildURL(startDate, endDate, latitude, longitude, granularity, parameter);
+    console.log(url);
+    loadJSONFile(url);
+    
+}
+
+function loadJSONFile(url) {
+  loadedJSON = loadJSON(url, onFileLoad);
+}
+
+function onFileLoad() {
+  console.log('loaded')
 }
 
 function buildURL(startDate, endDate, latitude, longitude, granularity, parameter) {
@@ -56,7 +69,7 @@ function buildURL(startDate, endDate, latitude, longitude, granularity, paramete
         "end_date=" + endDate + "&" +
         granularity + "=" + parameter;
 
-    console.log(openMeteoURL);
+    return openMeteoURL;
 }
 
 
