@@ -5,31 +5,36 @@
     <meta charset="UTF-8">
     <title>Data to MIDI</title>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="simple.css">
 </head>
 
 <body>
     <main>
-        <h1>Data to MIDI</h1>
+        <h1>Weather Data as MIDI</h1>
+
         <fieldset>
-            <form onsubmit="return getLocation()" method="dialog">
-                <label for="allow_geolocation">Use my location:</label>
-                <input type="checkbox" name="allow_geolocation">
-                <input type="submit">
-            </form>
-        </fieldset>
-        <fieldset>
-            <form onsubmit="return getData()" method="dialog">
+            <label for="location">Place name:</label>
+            <input type="text" name="location" id="location" value="London" required><br>
+            <button onclick="getLoc()">Get Location</button>
+
+            <p id="place_attributes"></p>
+            <p id="place_name"></p>
+
+            <form>
+                <label for="latitude">Latitude:</label>
+                <input type="number" name="latitude" id="latitude" value="0" required>
+
+                <label for="longitude">Longitude:</label>
+                <input type="number" name="longitude" id="longitude" value="0" required>
+
                 <label for="start-date">Start date:</label>
                 <input type="date" name="start-date" id="start-date" value="2000-01-01" min="1959-01-01"
                     max="2021-01-01" required>
+
                 <label for="end-date">End date:</label>
                 <input type="date" name="end-date" id="end-date" value="2000-01-02" min="1959-01-01" max="2021-01-01"
                     required>
-                <label for="latitude">Latitude:</label>
-                <input type="number" step="any" name="latitude" id="latitude" value="1">
-                <label for="longitude">Longitude:</label>
-                <input type="number" step="any" name="longitude" id="longitude" value="1">
+
                 <label for="parameter">Parameter:</label>
                 <select name="parameter" id="parameter" required>
                     <option value="temperature_2m">Temperature (2m)</option>
@@ -42,17 +47,17 @@
                     <option value="rain">Rain</option>
                     <option value="snowfall">Snowfall</option>
                     <option value="weathercode">Weathercode</option>
-                    <option disabled>Cloudcover</option>
+                    <option disabled>### Cloudcover</option>
                     <option value="cloudcover">Cloudcover Total</option>
                     <option value="cloudcover_low">Cloudcover Low</option>
                     <option value="cloudcover_mid">Cloudcover Mid</option>
                     <option value="cloudcover_high">Cloudcover High</option>
-                    <option disabled>Radiation</option>
+                    <option disabled>### Radiation</option>
                     <option value="shortwave_radiation">Shortwave Solar Radiation</option>
                     <option value="direct_radiation">Direct Solar Radiation</option>
                     <option value="diffuse_radiation">Diffuse Solar Radiation</option>
                     <option value="direct_normal_irradiance">Direct Normal Irradiance (DNI)</option>
-                    <option disabled>Wind</option>
+                    <option disabled>### Wind</option>
                     <option value="windspeed_10m">Windspeed 10m</option>
                     <option value="windspeed_100m">Windspeed 100m</option>
                     <option value="winddirection_10m">Wind Direction 10m</option>
@@ -60,21 +65,20 @@
                     <option disabled>──────────</option>
                     <option value="et0_fao_evapotranspiration">Reference Evotranspiration (ET0)</option>
                     <option value="vapor_pressure_deficit">Vapour Pressure Deficit</option>
-                    <option disabled>Soil Temperature</option>
+                    <option disabled>### Soil Temperature</option>
                     <option value="soil_temperature_0_to_7cm">Soil Temperature (0 to 7cm)</option>
                     <option value="soil_temperature_7_to_28cm">Soil Temperature (7 to 28cm)</option>
                     <option value="soil_temperature_28_to_100cm">Soil Temperature (28 to 100cm)</option>
                     <option value="soil_temperature_100_to_255cm">Soil Temperature (100 to 255cm)</option>
-                    <option disabled>Soil Moisture</option>
+                    <option disabled>### Soil Moisture</option>
                     <option value="soil_moisture_0_to_7cm">Soil Moisture (0 to 7cm)</option>
                     <option value="soil_moisture_7_to_28cm">Soil Moisture (7 to 28cm)</option>
                     <option value="soil_moisture_28_to_100cm">Soil Moisture (28 to 100cm)</option>
                     <option value="soil_moisture_100_to_255cm">Soil Moisture (100 to 255cm)</option>
                 </select>
-                <input type="submit">
             </form>
         </fieldset>
+        <button onclick="getData()">Get data</button>
     </main>
 </body>
-
 </html>
