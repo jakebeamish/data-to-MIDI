@@ -4,10 +4,11 @@ const geocode = "https://geocode.maps.co/search?q=";
 // Define base portion of the Open Meteo API request URL
 const open_meteo = "https://archive-api.open-meteo.com/v1/archive?";
 
-// let data;
+// Define a data set called 'data'
+let data;
 
-var data;
-var started = false;
+// Stop p5 from trying to draw things that don't exist yet
+let started = false;
 
 // Get coordinates for a given location using the Geocode API
 // User can enter place name (country, city, etc.) or an address, or a postal code
@@ -34,7 +35,7 @@ async function getLoc() {
   // Show the location's display name and attributes
   document.getElementById("place_name").innerText = location.display_name;
   // document.getElementById("place_attributes").innerText = location.class + ", " + location.type;
- 
+
   // Update latitude and longitude values in the form
   document.getElementById("latitude").setAttribute('value', location.lat);
   document.getElementById("longitude").setAttribute('value', location.lon);
@@ -78,7 +79,7 @@ async function getData() {
   // so the input form would have to adapt to this option dynamically
   let granularity = "hourly";
 
-  console.log("Getting " + parameter + " data from " + startDate + " to " + endDate)
+  // console.log("Getting " + parameter + " data from " + startDate + " to " + endDate)
 
   // Build the API request URL
   let data_url = open_meteo + "latitude=" + latitude + "&longitude=" + longitude + "&start_date=" + startDate + "&end_date=" + endDate + "&" + granularity + "=" + parameter;
@@ -89,6 +90,8 @@ async function getData() {
   // return data;
   // Log the data
   // console.table(data.hourly);
+  document.getElementById("report").innerText =
+    `${data.hourly.time.length} data points showing ${Object.keys(data.hourly)[1]} at ${latitude}, ${longitude} from ${startDate} to ${endDate}`;
   start();
 }
 
@@ -104,39 +107,39 @@ function setup() {
 
 function draw() {
 
-  
+
   if (started) {
 
     let start = new Date(data.hourly.time[0]).toDateString();
     let data_length = data.hourly.time.length - 1;
     let end = new Date(data.hourly.time[data_length]).toDateString();
 
-  // console.log(Object.keys(data.hourly))
-  clear();
-  background(255);
-  // console.log(data);
+    // console.log(Object.keys(data.hourly))
+    clear();
+    background(255);
+    // console.log(data);
 
 
-  for (let i = 0; i < data.hourly.time.length; i++) {
-    let x = (i / data.hourly.time.length) * width;
-    let y = height/2 - Object.values(data.hourly)[1][i];
-    strokeWeight(1);
-    if (data.hourly.time.length > width) {
-      if (i % 10 == 0) point(x, y);
-    } else {
-      point(x, y);
+    for (let i = 0; i < data.hourly.time.length; i++) {
+      let x = (i / data.hourly.time.length) * width;
+      let y = height / 2 - Object.values(data.hourly)[1][i];
+      // strokeWeight(1);
+      if (data.hourly.time.length > width) {
+        if (i % 200 == 0) point(x, y);
+      } else {
+        point(x, y);
+      }
+      if (x > 0) {
+        // line(x, )
+      }
     }
-    if (x > 0) {
-      // line(x, )
-    }
-  }
 
 
 
-  text(Object.keys(data.hourly)[0], 10, 10)
-  text(Object.keys(data.hourly)[1], 10, 20)
+    // text(Object.keys(data.hourly)[0], 10, 10)
+    // text(Object.keys(data.hourly)[1], 10, 20)
 
-  text(data.hourly.time.length + ' data points from ' + start + ' to ' + end, width/2, 10)
+    // text(data.hourly.time.length + ' data points from ' + start + ' to ' + end, width/2, 10)
   }
 }
 
