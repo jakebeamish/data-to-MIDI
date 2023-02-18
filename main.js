@@ -47,6 +47,9 @@ async function getLoc() {
 
 async function getData() {
 
+  let latitude = document.getElementById("latitude").value;
+  let longitude = document.getElementById("longitude").value;
+
   // Define start date
   let startDate = document.getElementById("start-date").value;
 
@@ -78,7 +81,7 @@ async function getData() {
   console.log("Getting " + parameter + " data from " + startDate + " to " + endDate)
 
   // Build the API request URL
-  let data_url = open_meteo + "latitude=52.52&longitude=13.41&" + "start_date=" + startDate + "&end_date=" + endDate + "&" + granularity + "=" + parameter;
+  let data_url = open_meteo + "latitude=" + latitude + "&longitude=" + longitude + "&start_date=" + startDate + "&end_date=" + endDate + "&" + granularity + "=" + parameter;
 
   // Get the data
   const response = await fetch(data_url);
@@ -104,7 +107,9 @@ function draw() {
   
   if (started) {
 
-    let start = new Date(data.hourly.time[0]);
+    let start = new Date(data.hourly.time[0]).toDateString();
+    let data_length = data.hourly.time.length - 1;
+    let end = new Date(data.hourly.time[data_length]).toDateString();
 
   // console.log(Object.keys(data.hourly))
   clear();
@@ -131,7 +136,7 @@ function draw() {
   text(Object.keys(data.hourly)[0], 10, 10)
   text(Object.keys(data.hourly)[1], 10, 20)
 
-  text(data.hourly.time.length + ' data points from ' + start.toDateString(), width/2, 10)
+  text(data.hourly.time.length + ' data points from ' + start + ' to ' + end, width/2, 10)
   }
 }
 
