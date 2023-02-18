@@ -2,7 +2,7 @@
 
 - [x] Create API query string, using
   - Location
-    - [ ] Automatic geolocation
+    - [ ] ==Automatic geolocation==
     - [x] Geocoding using place names
   - [x] User specified timeframe
   - [x] User specified data parameter (temperature, rainfall, windspeed, etc.)

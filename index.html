@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Data to MIDI</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
     <script src="main.js"></script>
-    <link rel="stylesheet" href="simple.css">
+    <!-- <link rel="stylesheet" href="simple.css"> -->
 </head>
 
 <body>
@@ -32,7 +34,7 @@
                     max="2021-01-01" required>
 
                 <label for="end-date">End date:</label>
-                <input type="date" name="end-date" id="end-date" value="2000-01-02" min="1959-01-01" max="2021-01-01"
+                <input type="date" name="end-date" id="end-date" value="2020-01-02" min="1959-01-01" max="2021-01-01"
                     required>
 
                 <label for="parameter">Parameter:</label>
@@ -79,6 +81,7 @@
             </form>
         </fieldset>
         <button onclick="getData()">Get data</button>
+        <p id="report"></p>
     </main>
 </body>
 </html>
