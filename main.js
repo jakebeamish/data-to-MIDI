@@ -4,6 +4,10 @@ const geocode = "https://geocode.maps.co/search?q=";
 // Define base portion of the Open Meteo API request URL
 const open_meteo = "https://archive-api.open-meteo.com/v1/archive?";
 
+// let data;
+
+var data;
+var started = false;
 
 // Get coordinates for a given location using the Geocode API
 // User can enter place name (country, city, etc.) or an address, or a postal code
@@ -79,8 +83,59 @@ async function getData() {
   // Get the data
   const response = await fetch(data_url);
   data = await response.json();
-
+  // return data;
   // Log the data
-  console.table(data.hourly);
+  // console.table(data.hourly);
+  start();
+}
 
+function preload() {
+  // getData();
+  // console.log(data);
+}
+
+function setup() {
+  createCanvas(720, 128);
+  noLoop();
+}
+
+function draw() {
+
+  
+  if (started) {
+
+    let start = new Date(data.hourly.time[0]);
+
+  // console.log(Object.keys(data.hourly))
+  clear();
+  background(255);
+  // console.log(data);
+
+
+  for (let i = 0; i < data.hourly.time.length; i++) {
+    let x = (i / data.hourly.time.length) * width;
+    let y = height/2 - Object.values(data.hourly)[1][i];
+    strokeWeight(1);
+    if (data.hourly.time.length > width) {
+      if (i % 10 == 0) point(x, y);
+    } else {
+      point(x, y);
+    }
+    if (x > 0) {
+      // line(x, )
+    }
+  }
+
+
+
+  text(Object.keys(data.hourly)[0], 10, 10)
+  text(Object.keys(data.hourly)[1], 10, 20)
+
+  text(data.hourly.time.length + ' data points from ' + start.toDateString(), width/2, 10)
+  }
+}
+
+function start() {
+  started = true;
+  loop();
 }
