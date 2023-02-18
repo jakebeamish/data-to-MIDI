@@ -11,4 +11,3 @@
 - [ ] Scale envelope amplitude
 - [ ] Scale envelope length to user specified timeframe
 - [ ] Create MIDI file containing automation curve
-
